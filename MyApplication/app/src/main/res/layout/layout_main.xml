@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="My Tasks"
+        android:id="@+id/textView4"
+        android:layout_gravity="center_horizontal"
+        android:textSize="30sp"
+        />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:text="List Tasks"
+        android:id="@+id/buttonList"
+        android:layout_gravity="center_horizontal"
+        android:onClick="listar"
+        />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:text="Add Task"
+        android:id="@+id/button2Add"
+        android:layout_gravity="center_horizontal"
+        android:onClick="adicionar"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:text="Send by Mail"
+        android:id="@+id/button3Mail"
+        android:layout_gravity="center_horizontal"
+        android:onClick="enviar"/>
+</LinearLayout>

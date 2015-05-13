@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AddTask"
+            android:label="New Task"
+            ></activity>
+        <activity android:name=".EditTask"></activity>
+        <activity android:name=".ListarTask"></activity>
+        <activity android:name=".SendbyMail"></activity>
     </application>
 
 </manifest>

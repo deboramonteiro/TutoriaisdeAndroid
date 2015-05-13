@@ -8,7 +8,16 @@ public class TaskBean {
     private String titulo;
     private String descricao;
     private String data_creation;
-    private boolean status;
+    private int status;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitulo() {
         return titulo;
@@ -34,11 +43,11 @@ public class TaskBean {
         this.data_creation = data_creation;
     }
 
-    public boolean isStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
