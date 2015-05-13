@@ -4,20 +4,21 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
 
 import java.util.List;
 
 
 public class MainActivity extends Activity {
 
+    private TaskDAO dao;
+    private List<TaskBean> pendentes;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_main);
+        dao = new TaskDAO(this);
 
 
     }
@@ -36,7 +37,23 @@ public class MainActivity extends Activity {
 
     public void enviar(View v)
     {
-        Intent it = new Intent(MainActivity.this,SendbyMail.class);
+        final String email = "debymontinfo@gmail.com";
+        final String assunto = "Tarefas Pendentes";
+        String corpo = new String();
+
+        pendentes = dao.TasksPendentes();
+
+        for(TaskBean b:pendentes)
+        {
+            corpo+= b.printDados();
+
+        }
+        Intent it = new Intent(Intent.ACTION_SEND);
+        it.putExtra(Intent.EXTRA_EMAIL,new String[]{email});
+        it.putExtra(Intent.EXTRA_SUBJECT, assunto);
+        it.putExtra(Intent.EXTRA_TEXT,corpo);
+        it.setType("plain/text");
+        startActivity(Intent.createChooser(it,"Enviar email..."));
         startActivity(it);
     }
 

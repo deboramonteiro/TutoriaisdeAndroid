@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="#ffffffff">
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,6 +22,8 @@
         android:id="@+id/buttonList"
         android:layout_gravity="center_horizontal"
         android:onClick="listar"
+        android:background="#ffff8adf"
+        android:layout_marginBottom="5dp"
         />
 
     <Button
@@ -29,7 +32,9 @@
         android:text="Add Task"
         android:id="@+id/button2Add"
         android:layout_gravity="center_horizontal"
-        android:onClick="adicionar"/>
+        android:onClick="adicionar"
+        android:background="#ffff8adf"
+        android:layout_marginBottom="5dp"/>
 
     <Button
         android:layout_width="300dp"
@@ -37,5 +42,7 @@
         android:text="Send by Mail"
         android:id="@+id/button3Mail"
         android:layout_gravity="center_horizontal"
-        android:onClick="enviar"/>
+        android:onClick="enviar"
+        android:background="#ffff8adf"
+        android:layout_marginBottom="5dp"/>
 </LinearLayout>

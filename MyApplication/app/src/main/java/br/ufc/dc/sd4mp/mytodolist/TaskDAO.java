@@ -56,7 +56,7 @@ public class TaskDAO extends SQLiteOpenHelper {
 
     public TaskBean retrieve(Integer id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor result = db.rawQuery("select id, title, descricao, status, strftime('%d-%m-%Y %H:%M:%S', creation_time) from task where id = ?", new String[]{Integer.toString(id)});
+        Cursor result = db.rawQuery("select id, title, descricao, status, strftime('%d-%m-%Y %H:%M:%S', creation_time) as time from task where id = ?", new String[]{Integer.toString(id)});
         TaskBean t = null;
         if (result != null && result.getCount() > 0) {
             result.moveToFirst();
@@ -65,7 +65,7 @@ public class TaskDAO extends SQLiteOpenHelper {
             t.setTitulo(result.getString(result.getColumnIndex("title")));
             t.setDescricao(result.getString(result.getColumnIndex("descricao")));
             t.setStatus(result.getInt(result.getColumnIndex("status")));
-            t.setData_creation(result.getString(result.getColumnIndex("creation_time")));
+            t.setDataCreation(result.getString(result.getColumnIndex("time")));
         }
         return t;
     }
@@ -87,7 +87,7 @@ public class TaskDAO extends SQLiteOpenHelper {
     public List<TaskBean> list() {
         List<TaskBean> tarefas = null;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor result = db.rawQuery("select id, title, descricao,status, strftime('%d-%m-%Y %H:%M:%S', creation_time) from task order by id desc", null);
+        Cursor result = db.rawQuery("select id, title, descricao,status, strftime('%d-%m-%Y %H:%M:%S', creation_time) as time from task order by id desc", null);
         if (result != null && result.getCount() > 0) {
             tarefas = new ArrayList<TaskBean>();
             result.moveToFirst();
@@ -97,7 +97,7 @@ public class TaskDAO extends SQLiteOpenHelper {
                 t.setTitulo(result.getString(1));
                 t.setDescricao(result.getString(2));
                 t.setStatus(result.getInt(3));
-                t.setData_creation(result.getString(4));
+                t.setDataCreation(result.getString(4));
                 tarefas.add(t);
                 result.moveToNext();
             }
@@ -108,7 +108,7 @@ public class TaskDAO extends SQLiteOpenHelper {
     public List<TaskBean> listByCreationTime() {
         List<TaskBean> tarefas = null;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor result = db.rawQuery("select id, title, descricao, status, strftime('%d-%m-%Y %H:%M:%S', creation_time) from task order by creation_time", null);
+        Cursor result = db.rawQuery("select id, title, descricao, status, strftime('%d-%m-%Y %H:%M:%S', creation_time) as time from task order by creation_time", null);
         if (result != null && result.getCount() > 0) {
             tarefas = new ArrayList<TaskBean>();
             result.moveToFirst();
@@ -118,7 +118,7 @@ public class TaskDAO extends SQLiteOpenHelper {
                 t.setTitulo(result.getString(1));
                 t.setDescricao(result.getString(2));
                 t.setStatus(result.getInt(3));
-                t.setData_creation(result.getString(4));
+                t.setDataCreation(result.getString(4));
                 tarefas.add(t);
                 result.moveToNext();
             }
@@ -129,7 +129,7 @@ public class TaskDAO extends SQLiteOpenHelper {
     public List<TaskBean> TasksPendentes() {
         List<TaskBean> tasks = new ArrayList<TaskBean>();;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor result = db.rawQuery("select id, title, descricao, status, strftime('%d-%m-%Y %H:%M:%S', creation_time) from task where status = 0", null);
+        Cursor result = db.rawQuery("select id, title, descricao, status, strftime('%d-%m-%Y %H:%M:%S', creation_time) as time from task where status = 0", null);
         if (result != null && result.getCount() > 0) {
             //tasks = new ArrayList<Task>();
             result.moveToFirst();
@@ -139,7 +139,7 @@ public class TaskDAO extends SQLiteOpenHelper {
                 task.setTitulo(result.getString(1));
                 task.setDescricao(result.getString(2));
                 task.setStatus(result.getInt(3));
-                task.setData_creation(result.getString(4));
+                task.setDataCreation(result.getString(4));
                 tasks.add(task);
                 result.moveToNext();
             }

@@ -31,23 +31,22 @@ public class EditTask extends Activity {
         tvData = (TextView)findViewById(R.id.tvData);
         checkStatus = (CheckBox)findViewById(R.id.checkBoxStatus);
 
-        bean = new TaskBean();
-
-
             int id = getIntent().getExtras().getInt("id");
-            bean.setId(id);
 
             dao = new TaskDAO(this);
-            //bean = dao.retrieve(id);
-            etTitle.setText(getIntent().getExtras().getString("title"));
-            etDesc.setText(getIntent().getExtras().getString("desc"));
-            tvData.setText(getIntent().getExtras().getString("data"));
 
-            if(getIntent().getExtras().getInt("status") == 1)
+            bean = dao.retrieve(id);
+            etTitle.setText(bean.getTitulo());
+            etDesc.setText(bean.getDescricao());
+            tvData.setText("Criada em: "+bean.getData_creation());
+
+            if(bean.getStatus() == 1)
                 checkStatus.setChecked(true);
             else
                 checkStatus.setChecked(false);
             etTitle.requestFocus();
+
+
 
     }
 
@@ -58,6 +57,7 @@ public class EditTask extends Activity {
         bean.setTitulo(etTitle.getText().toString());
         bean.setStatus((checkStatus.isChecked() == true) ? 1 : 0);
         dao.update(bean);
+        Toast.makeText(EditTask.this,"Alterações salvas!",Toast.LENGTH_SHORT).show();
         Intent it = new Intent(EditTask.this,MainActivity.class);
         startActivity(it);
     }

@@ -5,5 +5,5 @@ import android.app.Activity;
 /**
  * Created by Debora on 12/05/2015.
  */
-public class SendbyMail extends Activity {
+public class SendByMail extends Activity {
 }

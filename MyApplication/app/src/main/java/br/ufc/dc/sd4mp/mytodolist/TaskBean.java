@@ -7,7 +7,7 @@ public class TaskBean {
 
     private String titulo;
     private String descricao;
-    private String data_creation;
+    private String dataCreation;
     private int status;
     private int id;
 
@@ -36,11 +36,11 @@ public class TaskBean {
     }
 
     public String getData_creation() {
-        return data_creation;
+        return dataCreation;
     }
 
-    public void setData_creation(String data_creation) {
-        this.data_creation = data_creation;
+    public void setDataCreation(String data_creation) {
+        this.dataCreation = data_creation;
     }
 
     public int getStatus() {
@@ -49,6 +49,12 @@ public class TaskBean {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String printDados()
+    {
+        String strStatus = (status == 1)? "Concluída":"Pendente";
+        return "id:\t"+id+"\nTítulo:\t"+titulo+"\nDescrição:\t"+descricao+"\nStatus:\t"+strStatus+"\nCriada em:\t"+dataCreation+"\n\n";
     }
 
 

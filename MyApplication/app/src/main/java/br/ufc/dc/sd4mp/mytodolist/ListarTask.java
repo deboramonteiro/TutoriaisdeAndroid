@@ -41,10 +41,6 @@ public class ListarTask extends Activity {
 
                 Intent i = new Intent(ListarTask.this, EditTask.class);
                 i.putExtra("id",task.getId());
-                i.putExtra("title",task.getTitulo());
-                i.putExtra("desc",task.getDescricao());
-                i.putExtra("status",task.getStatus());
-                i.putExtra("data",task.getData_creation());
 
                 startActivity(i);
 
@@ -63,12 +59,12 @@ public class ListarTask extends Activity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        /*if(dao.delete(task.getId()) > 0)
+                        if(dao.delete(task.getId()) > 0)
                         {
                             Toast.makeText(ListarTask.this,"Excluido com sucesso!",Toast.LENGTH_SHORT).show();
                             Intent it = new Intent(ListarTask.this,MainActivity.class);
                             startActivity(it);
-                        }*/
+                        }
 
                     }
                 });
@@ -80,9 +76,9 @@ public class ListarTask extends Activity {
                     }
                 });
 
-                //AlertDialog al = builder.create();
-                builder.show();
-                return false;
+                AlertDialog al = builder.create();
+                al.show();
+                return true;
             }
         });
     }
